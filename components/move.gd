@@ -17,8 +17,8 @@ func _process(delta: float) -> void:
 
 	match mode:
 		MoveMode.DIRECTIONAL:
-			parent.position += direction.normalized() * step
+			parent.global_position += direction.normalized() * step
 
 		MoveMode.TARGET_NODE:
 			if is_instance_valid(target):
-				parent.position = parent.position.move_toward(target.global_position, step)
+				parent.global_position = parent.global_position.move_toward(target.global_position, step)

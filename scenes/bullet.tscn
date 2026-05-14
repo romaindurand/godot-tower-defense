@@ -18,4 +18,5 @@ texture = ExtResource("1_mkf8s")
 
 [node name="MoveComponent" type="Node2D" parent="." unique_id=875769920]
 script = ExtResource("3_l5glv")
+speed = 700.0
 metadata/_custom_type_script = "uid://dytdgyhfjq5qb"
