@@ -1,9 +1,10 @@
 class_name Enemy extends Node2D
 @onready var move_component: MoveComponent = $MoveComponent
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	move_component.target = get_parent().get_node_or_null("Tower")
+	navigation_agent_2d.target_position = get_parent().get_node_or_null("Tower").global_position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Bullet:

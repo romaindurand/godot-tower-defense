@@ -29,10 +29,13 @@ color = Color(0.64, 0.2048, 0.2048, 0.39215687)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2038254035]
 shape = SubResource("CircleShape2D_md0e3")
 
-[node name="MoveComponent" type="Node2D" parent="." unique_id=1390479406]
+[node name="MoveComponent" type="Node2D" parent="." unique_id=1390479406 node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("3_4ra3w")
-mode = 1
+mode = 2
 speed = 40.0
+nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://dytdgyhfjq5qb"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=365099776]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

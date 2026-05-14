@@ -5,9 +5,14 @@
 
 [sub_resource type="Curve2D" id="Curve2D_yqjtg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -564, -308, 0, 0, 0, 0, 566, -311, 0, 0, 0, 0, 557, 312, 0, 0, 0, 0, -552, 303, 0, 0, 0, 0, -564, -308)
+"points": PackedVector2Array(0, 0, 0, 0, -1104, -619, 0, 0, 0, 0, 1104, -606, 0, 0, 0, 0, 1114, 618, 0, 0, 0, 0, -1089, 586, 0, 0, 0, 0, -1106, -616)
 }
 point_count = 5
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_yqjtg"]
+vertices = PackedVector2Array(-1516.1484, -1012.6328, 1452.4219, -913.35156, 347.14844, -228.14063, -21.34375, -316.22656, 1352.5469, 807.1406, 193.77344, 203.82031, -1369.7578, 848.85156, -166.46875, -182.57813, -152.64844, 164.97656, -84.59375, 102.07031, -76.42969, -81.046875, 83.21094, -82.046875, 163.47656, 129.11719, 245.72656, -189.49219, 95.88281, -145.42188, -9.7578125, -246.71094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(6, 0, 3, 7), PackedInt32Array(5, 4, 6, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 12, 11, 14), PackedInt32Array(15, 13, 14, 7), PackedInt32Array(3, 15, 7), PackedInt32Array(6, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1463, -923, 1362, 817, -1379, 859, -1527, -1023)])
 
 [node name="Game" type="Node2D" unique_id=1757155370]
 script = ExtResource("1_yqjtg")
@@ -16,6 +21,7 @@ script = ExtResource("1_yqjtg")
 position = Vector2(0, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1647378821]
+zoom = Vector2(0.5, 0.5)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=261950869]
 wait_time = 0.388
@@ -23,5 +29,16 @@ autostart = true
 
 [node name="SpawnLine" type="Path2D" parent="." unique_id=1153910680]
 curve = SubResource("Curve2D_yqjtg")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=152935013]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_yqjtg")
+use_edge_connections = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D" unique_id=382289787]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D" unique_id=2033962928]
+position = Vector2(-311, -22)
+polygon = PackedVector2Array(168, 178, 155, -149, 395, -115, 386, -70, 225, -69, 216, 133, 482, 162, 569, -175, 310, -233, 302, -281, 645, -199, 498, 215)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
