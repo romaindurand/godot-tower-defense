@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c4qjaacq0t1fu"]
+
+[ext_resource type="Texture2D" uid="uid://b8gkkrqawyomq" path="res://assets/icon.svg" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://54iu6lt13cs4" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://dytdgyhfjq5qb" path="res://components/move.gd" id="3_l5glv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gxap"]
+
+[node name="Bullet" type="StaticBody2D" unique_id=801104222]
+script = ExtResource("1_y25gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762298697]
+shape = SubResource("CircleShape2D_0gxap")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1138879193]
+scale = Vector2(0.109375, 0.109375)
+texture = ExtResource("1_mkf8s")
+
+[node name="MoveComponent" type="Node2D" parent="." unique_id=875769920]
+script = ExtResource("3_l5glv")
+metadata/_custom_type_script = "uid://dytdgyhfjq5qb"

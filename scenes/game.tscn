@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://7tsl3blxepl4"]
+
+[ext_resource type="PackedScene" uid="uid://biukxvhgxh4y1" path="res://scenes/tower.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://cbflu1bds0vfk" path="res://scripts/game.gd" id="1_yqjtg"]
+
+[node name="Game" type="Node2D" unique_id=1757155370]
+script = ExtResource("1_yqjtg")
+
+[node name="Tower" parent="." unique_id=2000626869 instance=ExtResource("1_uwrxv")]
+position = Vector2(0, -3)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1647378821]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=261950869]
+wait_time = 0.388
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
