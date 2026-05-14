@@ -4,7 +4,8 @@ class_name Enemy extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	move_component.speed = 40
-	move_component.angle = atan2(0 - position.y, 0 - position.x)
+	# direction vers le centre de la carte (0, 0)
+	move_component.angle = position.direction_to(Vector2.ZERO).angle()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("collision")
