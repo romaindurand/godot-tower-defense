@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://cdcohkrh3sdgt"]
 
-[ext_resource type="Texture2D" uid="uid://b8gkkrqawyomq" path="res://assets/icon.svg" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cnyk55h1f7g78" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://dytdgyhfjq5qb" path="res://components/move.gd" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://didc2dnro26km" path="res://components/health.gd" id="4_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://djs0e3txn5vq4" path="res://scenes/health_bar.tscn" id="5_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://dllauu6br8b1q" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="6_xwavj"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ra3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
 radius = 32.0
@@ -40,12 +37,6 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" unique_id=130768671]
 collision_layer = 2
 script = ExtResource("1_md0e3")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1028178983]
-visible = false
-material = SubResource("CanvasItemMaterial_4ra3w")
-scale = Vector2(0.53125, 0.53125)
-texture = ExtResource("1_7p1mj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=975160072]
 
