@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b8gkkrqawyomq" path="res://assets/icon.svg" id="1_2x682"]
 [ext_resource type="Script" uid="uid://cgoopqh7ko4qf" path="res://scripts/tower.gd" id="1_ay4al"]
+[ext_resource type="Script" uid="uid://didc2dnro26km" path="res://components/health.gd" id="3_qrbg1"]
+[ext_resource type="PackedScene" uid="uid://djs0e3txn5vq4" path="res://scenes/health_bar.tscn" id="4_jfguu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2x682"]
 size = Vector2(128, 128)
 
-[node name="Tower" type="StaticBody2D" unique_id=2000626869]
+[node name="Tower" type="Area2D" unique_id=2075904578]
 script = ExtResource("1_ay4al")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1041976444]
@@ -19,4 +21,16 @@ shape = SubResource("RectangleShape2D_2x682")
 wait_time = 0.766
 autostart = true
 
+[node name="HealthComponent" type="Node" parent="." unique_id=130472284]
+script = ExtResource("3_qrbg1")
+metadata/_custom_type_script = "uid://didc2dnro26km"
+
+[node name="HealthBar" parent="." unique_id=1619890597 node_paths=PackedStringArray("health_component") instance=ExtResource("4_jfguu")]
+offset_top = 170.0
+offset_bottom = 170.0
+scale = Vector2(2, 2)
+health_component = NodePath("../HealthComponent")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

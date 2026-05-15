@@ -1,15 +1,7 @@
-extends StaticBody2D
+extends Area2D
 
 const bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _on_timer_timeout() -> void:
 	var closest_enemy = find_closest_enemy()
@@ -36,8 +28,20 @@ func find_closest_enemy() -> Enemy:
 	var closest: Enemy = null
 	var closest_distance: float = INF
 	for enemy in game.enemies:
+		if not is_instance_valid(enemy):
+			continue
 		var distance = global_position.distance_to(enemy.global_position)
 		if distance < closest_distance:
 			closest_distance = distance
 			closest = enemy
 	return closest
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		health_component.damage(10)
+		body.queue_free()
+
+
+func _on_health_component_died() -> void:
+	queue_free()
