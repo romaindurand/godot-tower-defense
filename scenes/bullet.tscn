@@ -6,7 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gxap"]
 
-[node name="Bullet" type="StaticBody2D" unique_id=801104222]
+[node name="Bullet" type="Area2D" unique_id=933227223]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762298697]
@@ -20,3 +22,5 @@ texture = ExtResource("1_mkf8s")
 script = ExtResource("3_l5glv")
 speed = 699.34
 metadata/_custom_type_script = "uid://dytdgyhfjq5qb"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

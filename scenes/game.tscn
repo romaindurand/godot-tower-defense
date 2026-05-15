@@ -10,9 +10,10 @@ _data = {
 point_count = 5
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yqjtg"]
-vertices = PackedVector2Array(-263.54688, -301.71875, -3.1796875, -245.24219, -3.1875, -245.24219, -1516.1484, -1012.6328, 1452.4219, -913.35156, 346.97656, -227.67188, -374.7578, -435.21094, 193.77344, 203.82031, 1352.5469, 807.1406, 337.64063, 401.85156, -1369.7578, 848.85156, -389.14844, 358.3203, 331.14844, 488.8203, -84.59375, 102.07031, -76.42969, -81.046875, 83.21094, -82.046875, 163.47656, 129.11719, 245.72656, -189.49219, 95.88281, -145.42188, -166.46875, -182.57813, -290.60156, 281.79688, -152.64844, 164.97656)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 5, 4, 8, 9), PackedInt32Array(10, 3, 6, 11), PackedInt32Array(8, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 16, 15, 18), PackedInt32Array(2, 17, 18, 19, 0), PackedInt32Array(20, 0, 19, 21), PackedInt32Array(9, 20, 21, 7), PackedInt32Array(8, 12, 9)])
+vertices = PackedVector2Array(-244.79688, -265.3828, -10.0703125, -214.46875, -10.078125, -214.46875, -1481.9531, -979.9297, 1419.0703, -882.90625, 387.90625, -248.71094, -395.03125, -473.85156, 1322.7734, 776.0625, 215.67188, 236.39063, -1340.6484, 816.8672, -610.5078, 403.52344, 207.0625, -165.84375, 138.99219, 97.8125, -15.7265625, -106.21875, -39.34375, -149.53125, -87.22656, 93.25781, -90.921875, 10.3671875, -173.02344, -149.53125, -413.72656, 269.42188, -223.10156, -36.492188, -207.07031, 210.1875, 108.82031, 427.54688, 6.2734375, 537.60156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(5, 4, 7, 8), PackedInt32Array(9, 3, 6, 10), PackedInt32Array(2, 11, 12, 13, 14), PackedInt32Array(12, 15, 16, 13), PackedInt32Array(0, 2, 14, 17), PackedInt32Array(18, 0, 17, 19), PackedInt32Array(18, 19, 20), PackedInt32Array(21, 18, 20, 8, 7), PackedInt32Array(22, 21, 7), PackedInt32Array(22, 7, 9), PackedInt32Array(9, 10, 22)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1463, -923, 1362, 817, -1379, 859, -1527, -1023)])
+agent_radius = 41.53
 
 [node name="Game" type="Node2D" unique_id=1757155370]
 script = ExtResource("1_yqjtg")
@@ -24,7 +25,7 @@ position = Vector2(0, -3)
 zoom = Vector2(0.5, 0.5)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=261950869]
-wait_time = 0.388
+wait_time = 0.524
 autostart = true
 
 [node name="SpawnLine" type="Path2D" parent="." unique_id=1153910680]
@@ -38,6 +39,6 @@ use_edge_connections = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D" unique_id=2033962928]
 position = Vector2(-311, -22)
-polygon = PackedVector2Array(168, 178, 155, -149, 395, -115, 386, -70, 225, -69, 216, 133, 482, 162, 569, -175, 310, -233, 38, -292, 10, 312, 638, 432, 633, 499, -68, 372, -54, -400, 645, -199, 498, 215)
+polygon = PackedVector2Array(143, 193, 130, -7, 165, -86, 247, -86, 178, 21, 184, 156, 482, 162, 569, -175, 310, -233, 38, -292, -155, 319, 344, 470, 303, 514, -249, 394, -54, -400, 645, -199, 498, 215)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

@@ -5,19 +5,44 @@
 [ext_resource type="Script" uid="uid://dytdgyhfjq5qb" path="res://components/move.gd" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://didc2dnro26km" path="res://components/health.gd" id="4_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://djs0e3txn5vq4" path="res://scenes/health_bar.tscn" id="5_c4w8v"]
+[ext_resource type="Texture2D" uid="uid://dllauu6br8b1q" path="res://assets/Characters/Basic Charakter Spritesheet.png" id="6_xwavj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ra3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
-radius = 36.013885
+radius = 32.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
-size = Vector2(62, 62)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xwavj"]
+radius = 32.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("6_xwavj")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
+atlas = ExtResource("6_xwavj")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ipns3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md484")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=130768671]
+collision_layer = 2
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1028178983]
+visible = false
 material = SubResource("CanvasItemMaterial_4ra3w")
 scale = Vector2(0.53125, 0.53125)
 texture = ExtResource("1_7p1mj")
@@ -35,6 +60,8 @@ nav_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://dytdgyhfjq5qb"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=365099776]
+avoidance_enabled = true
+radius = 20.84
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1912325829]
 script = ExtResource("4_5uy6h")
@@ -46,7 +73,14 @@ offset_bottom = -1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="HurtBox" type="CollisionShape2D" parent="." unique_id=2093172411]
-shape = SubResource("RectangleShape2D_c4w8v")
+shape = SubResource("CircleShape2D_xwavj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1809140426]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ipns3")
+autoplay = "default"
+frame_progress = 0.29670864
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="MoveComponent" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

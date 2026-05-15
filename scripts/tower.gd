@@ -1,4 +1,4 @@
-extends Area2D
+class_name Tower extends Area2D
 
 const bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 @onready var health_component: HealthComponent = $HealthComponent
